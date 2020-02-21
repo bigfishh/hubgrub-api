@@ -1,0 +1,2 @@
+class RestitemsController < ApplicationController
+end
