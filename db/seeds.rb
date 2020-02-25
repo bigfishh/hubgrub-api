@@ -96,7 +96,7 @@ puts "creating restaurants"
         postal_code: "11201", 
         street_address: "81 Washington St", 
         price_rating: 3, 
-        media_image: "https://media-cdn.grubhub.com/image/upload/")
+        media_image: "https://media-cdn.tripadvisor.com/media/photo-s/0f/a8/d3/ea/plates.jpg")
     
     #Breakfast
     montagueBagels = Restaurant.create(

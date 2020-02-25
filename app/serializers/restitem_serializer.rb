@@ -1,12 +1,13 @@
 class RestitemSerializer < ActiveModel::Serializer
-  attributes :id, :item
+  attributes :id, :item_id, :item_name, :price
 
-  def item
+  def item_id
     # byebug
-    {
-      id: self.object.item.id,
-      name: self.object.item.name
-    }
+      self.object.item.id
+  end
+
+  def item_name
+    self.object.item.name
   end
 
 end
