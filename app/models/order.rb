@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
   #associations
-  belongs_to :user, dependent: :destroy
-  belongs_to :restaurant
+  belongs_to :user
+  belongs_to :restaurant, optional: true
 
   has_many :orderitems, dependent: :destroy
-  has_many :items, through: :orderitems
+  has_many :restitems, through: :orderitems
 end

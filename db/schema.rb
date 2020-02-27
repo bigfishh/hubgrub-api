@@ -28,18 +28,19 @@ ActiveRecord::Schema.define(version: 2020_02_20_204318) do
   end
 
   create_table "orderitems", force: :cascade do |t|
-    t.bigint "item_id", null: false
+    t.bigint "restitem_id", null: false
     t.bigint "order_id", null: false
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_orderitems_on_item_id"
     t.index ["order_id"], name: "index_orderitems_on_order_id"
+    t.index ["restitem_id"], name: "index_orderitems_on_restitem_id"
   end
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "restaurant_id", null: false
+    t.bigint "restaurant_id"
+    t.boolean "checked_out", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"
@@ -80,8 +81,8 @@ ActiveRecord::Schema.define(version: 2020_02_20_204318) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "orderitems", "items"
   add_foreign_key "orderitems", "orders"
+  add_foreign_key "orderitems", "restitems"
   add_foreign_key "orders", "restaurants"
   add_foreign_key "orders", "users"
   add_foreign_key "restaurants", "categories"
