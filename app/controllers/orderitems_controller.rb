@@ -8,6 +8,7 @@ class OrderitemsController < ApplicationController
         @found_restaurant_id = @found_restitem.restaurant_id
 
         if @user.cart.restaurant_id.nil?
+            # byebug
             @user.cart.update(restaurant_id: @found_restaurant_id)
         end
 

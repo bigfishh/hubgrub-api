@@ -1,5 +1,5 @@
 class RestitemSerializer < ActiveModel::Serializer
-  attributes :id, :item_id, :item_name, :price
+  attributes :id, :item_id, :item_name, :price, :restaurant_id
 
   def item_id
     # byebug

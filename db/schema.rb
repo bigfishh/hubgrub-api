@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_02_20_204318) do
     t.bigint "user_id", null: false
     t.bigint "restaurant_id"
     t.boolean "checked_out", default: false
+    t.integer "total", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_orders_on_restaurant_id"

@@ -1,5 +1,5 @@
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :restaurant_id, :food_ordered
+  attributes :id, :restaurant_id, :food_ordered, :total, :checked_out
 
   def food_ordered
     self.object.orderitems.map do |orderitem| 
