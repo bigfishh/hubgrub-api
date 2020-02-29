@@ -8,7 +8,6 @@ class OrderitemsController < ApplicationController
         @found_restaurant_id = @found_restitem.restaurant_id
 
         if @user.cart.restaurant_id.nil?
-            # byebug
             @user.cart.update(restaurant_id: @found_restaurant_id)
         end
 
@@ -19,8 +18,13 @@ class OrderitemsController < ApplicationController
         render json: @user.cart
     end
 
-    def delete
-        
+    def destroy
+        # byebug
+        @user = logged_in_user
+        @found_item = Orderitem.find(params[:id])
+        @found_item.delete
+
+        render json: @user.cart
     end
 
     private

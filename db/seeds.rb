@@ -171,15 +171,11 @@ puts "creating restaurants"
 puts "finished creating restaurants"
 
 puts "creating orders"
-    firstOrder = Order.create(user_id: annie.id, restaurant_id: frontStreetPizza.id, checked_out: true)
     secondOrder = Order.create(user_id: annie.id, restaurant_id: miaBakery.id, checked_out: true)
-    
+
 puts "finished creating orders"
 
 puts "creating orderitems"
-    fOOI1 = Orderitem.create(restitem_id: frRP.id, order_id: firstOrder.id, price: frRP.price)
-    fOOI3 = Orderitem.create(restitem_id: frRP.id, order_id: firstOrder.id, price: frRP.price)
-
     sOOI1 = Orderitem.create(restitem_id: miaBCP.id, order_id: secondOrder.id, price: miaBCP.price)
     sOOI2 = Orderitem.create(restitem_id: miaCCC.id, order_id: secondOrder.id, price: miaCCC.price)
 
