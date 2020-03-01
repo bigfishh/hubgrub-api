@@ -1,5 +1,5 @@
 class OrderitemsController < ApplicationController
-    before_action :authorized, only: [:create]
+    before_action :authorized, only: [:create, :destroy]
 
     def create
         # byebug

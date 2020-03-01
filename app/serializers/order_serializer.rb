@@ -3,7 +3,7 @@ class OrderSerializer < ActiveModel::Serializer
 
   def food_ordered
     self.object.orderitems.map do |orderitem| 
-      RestitemSerializer.new(orderitem.restitem).as_json.merge({orderitem_id: orderitem.id})
+      RestitemSerializer.new(orderitem.restitem).as_json.merge({orderitem_id: orderitem.id, quantity: orderitem.quantity})
     end
   end
 
