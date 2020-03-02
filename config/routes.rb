@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :destroy] 
   # resources :categories
   resources :items, only: [:show, :index]
+  post '/charges', to: 'charges#create'
 
   post '/login', to: 'users#login'
   get '/persist', to: 'users#persist'

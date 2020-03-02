@@ -49,3 +49,5 @@ gem "faker", "~> 2.10"
 
 gem "rest-client"
 
+gem 'stripe'
+gem 'dotenv'
