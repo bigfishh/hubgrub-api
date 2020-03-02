@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:update]
   resources :restaurants, only: [:show, :index]
   resources :users, only: [:index, :show, :create, :destroy] 
-  # resources :categories
+  resources :categories, only: [:index]
   resources :items, only: [:show, :index]
   post '/charges', to: 'charges#create'
 
