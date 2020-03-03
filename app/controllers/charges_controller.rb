@@ -5,7 +5,7 @@ Dotenv.load
 class ChargesController < ApplicationController
     
     def create
-        byebug
+        # byebug
         Stripe.api_key = ENV['STRIPE_API_KEY']
         token = params[:charge][:token]
         price = params[:price]

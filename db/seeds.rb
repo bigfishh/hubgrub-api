@@ -9,12 +9,49 @@
 # API_KEY = <YOUR_API_KEY>
 # rm = RestClient.get("https://api.yelp.com/", {:Authorization => 'Bearer xn9utIeMQxJOGU-5WcfUk4iLJcu5BaaRsfTkXI3089gk1SFifLLEkBsO1vI_YoCUBJ8r5CszoYXLJxNF3x7JU2_5JYFJiuZcq7XnPmL0NBhKlp7Vf7DpR4IkqdBVXnYx'})
 # byebug
+require 'yelp/fusion'
+require 'dotenv'
+Dotenv.load
+
+byebug
+
+client = Yelp::Fusion::Client.new(ENV["YELP_API_KEY"])
+response = client.search('New York City', term: 'restaurants')
+
+Category.destroy_all
+Restaurant.destroy_all
+
+puts "creating categories"
+    italian = Category.create(name: "Italian")
+    hamburger = Category.create(name: "Hamburger")
+    breakfast = Category.create(name: "Breakfast")
+    bakery = Category.create(name: "Bakery")
+    dessert = Category.create(name: "Dessert")
+puts "finished creating categories"
+
+response.businesses.each do |business|
+
+    Category.create(name: business.categories[0].alias)
+
+    Restaurant.create(
+        category_id: Category.last.id, 
+        name: business.name, 
+        latitude: business.coordinates.latitude, 
+        longitude: business.coordinates.longitude, 
+        city: business.location.city, 
+        state: business.location.state, 
+        postal_code: business.location.zip_code, 
+        street_address: business.location.address1, 
+        price_rating: 2, 
+        media_image: business.image_url
+    )
+end
 
 puts "destroying stuff"
     User.destroy_all
     Order.destroy_all
-    Restaurant.destroy_all
-    Category.destroy_all
+    # Restaurant.destroy_all
+    # Category.destroy_all
     Restitem.destroy_all
     Item.destroy_all
     Orderitem.destroy_all
@@ -24,13 +61,13 @@ puts "creating users"
     annie = User.create(username: "anniebearr", password: "itsannie", img_url: "https://ca.slack-edge.com/T02MD9XTF-UQD06FQCR-9a4f8e24cee4-512")
 puts "finished creating users"
 
-puts "creating categories"
-    italian = Category.create(name: "Italian")
-    hamburger = Category.create(name: "Hamburger")
-    breakfast = Category.create(name: "Breakfast")
-    bakery = Category.create(name: "Bakery")
-    dessert = Category.create(name: "Dessert")
-puts "finished creating categories"
+# puts "creating categories"
+#     italian = Category.create(name: "Italian")
+#     hamburger = Category.create(name: "Hamburger")
+#     breakfast = Category.create(name: "Breakfast")
+#     bakery = Category.create(name: "Bakery")
+#     dessert = Category.create(name: "Dessert")
+# puts "finished creating categories"
 
 puts "creating items"
     #Bakery
