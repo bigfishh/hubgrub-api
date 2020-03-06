@@ -13,13 +13,16 @@ require 'yelp/fusion'
 require 'dotenv'
 Dotenv.load
 
-byebug
+# byebug
 
 client = Yelp::Fusion::Client.new(ENV["YELP_API_KEY"])
 response = client.search('New York City', term: 'restaurants')
 
 Category.destroy_all
 Restaurant.destroy_all
+Item.destroy_all
+Restitem.destroy_all
+
 
 puts "creating categories"
     italian = Category.create(name: "Italian")
@@ -29,6 +32,8 @@ puts "creating categories"
     dessert = Category.create(name: "Dessert")
 puts "finished creating categories"
 
+
+puts "creating response.businesses"
 response.businesses.each do |business|
 
     Category.create(name: business.categories[0].alias)
@@ -42,9 +47,40 @@ response.businesses.each do |business|
         state: business.location.state, 
         postal_code: business.location.zip_code, 
         street_address: business.location.address1, 
-        price_rating: 2, 
+        price_rating: rand(1..5), 
         media_image: business.image_url
     )
+end
+puts "finished creating categories"
+
+
+
+30.times do
+    Item.create(
+        name: "#{Faker::Food.dish}"
+    )
+end
+
+20.times do
+    Item.create(
+        name: "#{Faker::Dessert.variety}"
+    )
+end
+
+30.times do
+    Item.create(
+        name: "#{Faker::Food.sushi}"
+    )
+end
+
+Restaurant.all.each do |restaurant|
+    25.times do 
+        Restitem.create(
+            item_id: Item.all.sample.id, 
+            restaurant_id: restaurant.id, 
+            price: rand(10..20)
+        )
+    end
 end
 
 puts "destroying stuff"
@@ -52,8 +88,7 @@ puts "destroying stuff"
     Order.destroy_all
     # Restaurant.destroy_all
     # Category.destroy_all
-    Restitem.destroy_all
-    Item.destroy_all
+    # Item.destroy_all
     Orderitem.destroy_all
 puts "finished destroying stuff"
 
@@ -207,16 +242,16 @@ puts "creating restaurants"
             
 puts "finished creating restaurants"
 
-puts "creating orders"
-    secondOrder = Order.create(user_id: annie.id, restaurant_id: miaBakery.id, checked_out: true)
+# puts "creating orders"
+#     secondOrder = Order.create(user_id: annie.id, restaurant_id: miaBakery.id, checked_out: true)
 
-puts "finished creating orders"
+# puts "finished creating orders"
 
-puts "creating orderitems"
-    sOOI1 = Orderitem.create(restitem_id: miaBCP.id, order_id: secondOrder.id, price: miaBCP.price)
-    sOOI2 = Orderitem.create(restitem_id: miaCCC.id, order_id: secondOrder.id, price: miaCCC.price)
+# puts "creating orderitems"
+#     sOOI1 = Orderitem.create(restitem_id: miaBCP.id, order_id: secondOrder.id, price: miaBCP.price)
+#     sOOI2 = Orderitem.create(restitem_id: miaCCC.id, order_id: secondOrder.id, price: miaCCC.price)
 
-puts "finished creating orderitems"
+# puts "finished creating orderitems"
 
 
 
