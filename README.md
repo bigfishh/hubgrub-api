@@ -56,3 +56,14 @@ Users are able to sign up and sign in. Upon signing in, users are taken to their
      alt="sign in option taken to home page"
      style="max-width: 100%" />
 
+User is able to see a list of restaurants in the New York City area via a list and on Google Maps. User is able to use buttons to filter restaurants based on categories. 
+
+<img src="./readme-gifs/filterbycategory.gif"
+     alt="filter by category"
+     style="max-width: 100%" />
+
+User is able to search by restaurant name.
+
+<img src="./readme-gifs/searchbyrestaurantname.gif"
+     alt="search bar"
+     style="max-width: 100%" />
