@@ -21,6 +21,7 @@ This web app makes use of the following:
 - PostgreSQL [>= 0.18, < 2.0] - Database
 
 **Front End**
+*For information on Frontend Installation please click here: [hubgrub-frontend](https://github.com/bigfishh/hubgrub-frontend)*
 - React.js
 - React Router - Declarative Routing
 - Semantic UI React 

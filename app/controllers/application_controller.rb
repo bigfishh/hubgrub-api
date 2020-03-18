@@ -1,9 +1,12 @@
+require 'dotenv'
+Dotenv.load
+
 class ApplicationController < ActionController::API
     # before_action :authorized
 
     def encode_token(payload)
         # should store secret in env variable
-        JWT.encode(payload, 'hellohellothere123')
+        JWT.encode(payload, ENV["jwt_secret_key"])
     end
 
     def auth_header
@@ -16,7 +19,7 @@ class ApplicationController < ActionController::API
             token = auth_header.split(' ')[1]
             # header: { 'Authorization': 'Bearer <token>' }
             begin
-                JWT.decode(token, 'hellohellothere123', true, algorithm: 'HS256')
+                JWT.decode(token, ENV["jwt_secret_key"], true, algorithm: 'HS256')
             rescue JWT::DecodeError
                 nil
             end
