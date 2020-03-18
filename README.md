@@ -20,24 +20,39 @@ This web app makes use of the following:
 - JWT - securing tokens
 - PostgreSQL [>= 0.18, < 2.0] - Database
 
-**Front End**
-*For information on Frontend Installation please click here: [hubgrub-frontend](https://github.com/bigfishh/hubgrub-frontend)*
+**Front End** [hubgrub-frontend](https://github.com/bigfishh/hubgrub-frontend)
 - React.js
 - React Router - Declarative Routing
 - Semantic UI React 
 - Custom CSS3 styling 
 - Google Maps React API
+- Stripe API
 
 ## Installing
 
-- Clone this repo to your local machine `git clone <this-repo-url>`
-
 **Backend Installation:**
 
-- run `bundle install` to install requiered dependencies
+- run `bundle install` to install required dependencies
 - Ensure you have PostgreSQL running
 - run `rails db:create` to create a database locally.
 - run `rails db:migrate` to create tables into the database.
 - run `rails db:seed` to create seed data.
 - run `rails s` to run the server. 
+
+**Frontend Installation:**
+
+- Clone this repo to your local machine `git clone <this-repo-url>`
+- `cd` to frontend directory
+- Ensure your Backend API is running at `http://localhost:3000/`
+- run `npm install` to install all dependencies
+- run `npm start` to start server
+- When prompted, ensure Frontend is running at `http://localhost:3001`
+
+## Features
+
+Users are able to sign up and sign in. Upon signing in, users are taken to their home page.
+
+<img src="./readme-gifs/signin-signup.gif"
+     alt="sign in option taken to home page"
+     style="max-width: 100%" />
 
