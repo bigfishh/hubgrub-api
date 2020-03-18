@@ -67,3 +67,27 @@ User is able to search by restaurant name.
 <img src="./readme-gifs/searchbyrestaurantname.gif"
      alt="search bar"
      style="max-width: 100%" />
+
+User is able to to click on a restaurant card and be taken to one specific restaurant where menu items are displayed. User is able to add and remove items from cart. 
+
+<img src="./readme-gifs/menu-item.gif"
+     alt="User is able to to click on a restaurant card and be taken to one specific restaurant where menu items are displayed"
+     style="max-width: 100%" />
+
+Upon checkout, user is able to enter their credit card information.
+
+<img src="./readme-gifs/pay.gif"
+     alt="User is able to add and remove items from cart. Upon checkout, user is able to enter their credit card information"
+     style="max-height: 100%" />
+
+User is able to go to their profile page and see their confirmed order. 
+
+<img src="./readme-gifs/confirm.gif"
+     alt="User is able to go to their profile page and see their confirmed order"
+     style="max-height: 100%" />
+
+User is able to delete their account or log out. 
+
+<img src="./readme-gifs/delete-logout.gif"
+     alt="User is able to delete their account"
+     style="max-height: 100%" />
