@@ -20,7 +20,7 @@ This web app makes use of the following:
 - JWT - securing tokens
 - PostgreSQL [>= 0.18, < 2.0] - Database
 
-**Front End** [hubgrub-frontend](https://github.com/bigfishh/hubgrub-frontend)
+[**Front End**](https://github.com/bigfishh/hubgrub-frontend)
 - React.js
 - React Router - Declarative Routing
 - Semantic UI React 
@@ -40,7 +40,7 @@ This web app makes use of the following:
 - run `rails db:seed` to create seed data.
 - run `rails s` to run the server. 
 
-**Frontend Installation:**
+[**Frontend Installation:**](https://github.com/bigfishh/hubgrub-frontend)
 
 - Clone frontend repo to your local machine `git clone <frontend-repo-url>`
 - Ensure your Backend API is running at `http://localhost:3000/`
