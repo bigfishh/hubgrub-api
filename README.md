@@ -40,9 +40,9 @@ This web app makes use of the following:
 - run `rails db:seed` to create seed data.
 - run `rails s` to run the server. 
 
-[**Frontend Installation:**](https://github.com/bigfishh/hubgrub-frontend)
+**Frontend Installation:** 
 
-- Clone frontend repo to your local machine `git clone <frontend-repo-url>`
+- Clone [frontend repo](https://github.com/bigfishh/hubgrub-frontend) to your local machine `git clone <frontend-repo-url>`
 - Ensure your Backend API is running at `http://localhost:3000/`
 - run `npm install` to install all dependencies
 - run `npm start` to start server
