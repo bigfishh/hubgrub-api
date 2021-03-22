@@ -36,10 +36,22 @@ puts "finished creating categories"
 puts "creating response.businesses"
 response.businesses.each do |business|
 
-    Category.create(name: business.categories[0].alias)
+    busi_cat = business.categories[0].alias.capitalize
+    
+    found_category = Category.all.find do |category|
+        category.name.gsub(/[^0-9a-z ]/i, '').include?(busi_cat.gsub(/[^0-9a-z ]/i, ''))
+    end
+
+    restaurant_category = nil
+    if found_category
+        restaurant_category = found_category
+    else
+        restaurant_category = Category.create(name: busi_cat)
+    end
+
 
     Restaurant.create(
-        category_id: Category.last.id, 
+        category_id: restaurant_category.id, 
         name: business.name, 
         latitude: business.coordinates.latitude, 
         longitude: business.coordinates.longitude, 
@@ -83,26 +95,26 @@ Restaurant.all.each do |restaurant|
     end
 end
 
-puts "destroying stuff"
-    User.destroy_all
-    # Order.destroy_all
-    # Restaurant.destroy_all
-    # Category.destroy_all
-    # Item.destroy_all
-    # Orderitem.destroy_all
-puts "finished destroying stuff"
+# puts "destroying stuff"
+#     User.destroy_all
+#     Order.destroy_all
+#     Restaurant.destroy_all
+#     Category.destroy_all
+#     Item.destroy_all
+#     Orderitem.destroy_all
+# puts "finished destroying stuff"
 
 puts "creating users"
     annie = User.create(username: "anniee", password: "itsannie", img_url: "https://ca.slack-edge.com/T02MD9XTF-UQD06FQCR-9a4f8e24cee4-512")
 puts "finished creating users"
 
-puts "creating categories"
-    italian = Category.create(name: "Italian")
-    hamburger = Category.create(name: "Hamburger")
-    breakfast = Category.create(name: "Breakfast")
-    bakery = Category.create(name: "Bakery")
-    dessert = Category.create(name: "Dessert")
-puts "finished creating categories"
+# puts "creating categories"
+#     italian = Category.create(name: "Italian")
+#     hamburger = Category.create(name: "Hamburger")
+#     breakfast = Category.create(name: "Breakfast")
+#     bakery = Category.create(name: "Bakery")
+#     dessert = Category.create(name: "Dessert")
+# puts "finished creating categories"
 
 puts "creating items"
     #Bakery

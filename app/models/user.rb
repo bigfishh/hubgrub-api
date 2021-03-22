@@ -18,6 +18,7 @@ class User < ApplicationRecord
     def past_orders 
         self.orders.where(checked_out: true)
     end
+    
 
     private
 
