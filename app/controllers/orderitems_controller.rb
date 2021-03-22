@@ -2,12 +2,11 @@ class OrderitemsController < ApplicationController
     before_action :authorized, only: [:create, :destroy]
 
     def create
-        # byebug
         @restitem_id = params[:restitem_id]
         @found_restitem = Restitem.find_by(id: @restitem_id)
         @found_restaurant_id = @found_restitem.restaurant_id
 
-        if @user.cart.restaurant_id.nil?
+        if @user.check_and_assign_restaurant(@found_restaurant_id)
             @user.cart.update(restaurant_id: @found_restaurant_id)
         end
 
@@ -19,7 +18,6 @@ class OrderitemsController < ApplicationController
     end
 
     def destroy
-        # byebug
         @user = logged_in_user
         @found_item = Orderitem.find(params[:id])
         @found_item.delete

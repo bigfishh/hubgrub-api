@@ -10,7 +10,6 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true
     after_create :set_cart
 
-
     def cart 
         self.orders.find_by(checked_out: false)
     end
@@ -18,7 +17,10 @@ class User < ApplicationRecord
     def past_orders 
         self.orders.where(checked_out: true)
     end
-    
+
+    def check_and_assign_restaurant(rest_id)
+        self.cart.update(restaurant_id: rest_id) if self.cart.restaurant_id.nil?
+    end
 
     private
 
@@ -26,5 +28,4 @@ class User < ApplicationRecord
         self.orders.create()
     end
 
-    
 end
